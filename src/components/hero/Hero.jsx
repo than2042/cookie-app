@@ -15,7 +15,7 @@ const Hero = () => {
     if (isCounting) {
       interval = setInterval(() => {
         setCount((prevCount) => prevCount + 1);
-      }, 200);
+      }, 150);
     }
     return () => {
       clearInterval(interval);
@@ -34,22 +34,35 @@ const Hero = () => {
     setCount(0);
   };
 
+  const handleBuy = () => {
+    setCount((prevCount) => prevCount - 10);
+  };
+
   return (
     <div className="heroContainer">
-      <h1>Welcome to Cooker Clicker</h1>
-      <div>
+      <h1 className="heroText">Welcome to Cooker Clicker!!!</h1>
+      <div className="countContainer">
         <FontAwesomeIcon
           icon={faCookie}
           className="cookie"
           onClick={handleStart}
         />
-        <p>Count Cookies: {count}</p>
+        <p className="count">Count Cookies: {count}</p>
       </div>
-      <div>
-        <Button onClick={handleStart}>Start</Button>
-        <Button onClick={handleStop}>Stop</Button>
-        <Button onClick={handleRest}>Reset</Button>
+      <div className="btnContainer">
+        <Button className={"start"} onClick={handleStart}>
+          Start
+        </Button>
+        <Button className={"stop"} onClick={handleStop}>
+          Stop
+        </Button>
+        <Button className={"reset"} onClick={handleRest}>
+          Reset
+        </Button>
       </div>
+      <Button className={"buy"} onClick={handleBuy}>
+        Buy Cookies
+      </Button>
     </div>
   );
 };
