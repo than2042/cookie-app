@@ -12,6 +12,7 @@ const Hero = () => {
   const [count, setCount] = useState(initialCount);
   const [isCounting, setIsCounting] = useState(false);
   const [showPorduct, setShowProduct] = useState(false);
+  // const [isDisabled, setIsDisabled] = useState(false);
 
   useEffect(() => {
     let interval;
@@ -38,6 +39,10 @@ const Hero = () => {
 
   const handleRest = () => {
     setCount(0);
+  };
+
+  const handleShow = () => {
+    setShowProduct(!showPorduct);
   };
 
   const handleBuy = (name) => {
@@ -99,15 +104,20 @@ const Hero = () => {
     cookie.length = 0;
     Array.prototype.push.apply(cookie, updateQuantity);
   };
-
-  const handleShow = () => {
-    setShowProduct(!showPorduct);
+  // disable buy buttons accordingly
+  const handleDisabled = (itemName) => {
+    return (
+      count < 10 ||
+      (count < 20 && itemName === "Nana") ||
+      (count < 30 && itemName === "Sister Cookies") ||
+      (count < 40 && itemName === "Factory")
+    );
   };
 
   return (
     <div className="heroContainer">
       <div className="container">
-        <h1 className="heroText">Welcome to Cooker Clicker!!!</h1>
+        <h1 className="heroText">Welcome Oiganic Cookie Farm!!!</h1>
         <div className="countContainer">
           <FontAwesomeIcon
             icon={faCookie}
@@ -127,13 +137,17 @@ const Hero = () => {
             Reset
           </Button>
         </div>
-        <div>{showPorduct && <Product onBuy={handleBuy} />}</div>
+        <div className="showProduct">
+          {showPorduct && (
+            <Product onBuy={handleBuy} disabled={handleDisabled} />
+          )}
+        </div>
         <Button className={"buy"} onClick={handleShow}>
           Buy Cookies
         </Button>
       </div>
       <div className="displayProduct">
-        <Product onBuy={handleBuy} />
+        <Product onBuy={handleBuy} disabled={handleDisabled} />
       </div>
     </div>
   );

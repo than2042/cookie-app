@@ -3,24 +3,15 @@ import { cookie } from "../../utils/cookie";
 
 import "./product.scss";
 
-const Product = ({ onBuy }) => {
+const Product = ({ onBuy, disabled }) => {
   const [stores, setStores] = useState([]);
 
   useEffect(() => {
     setStores(cookie);
-
-    // const handleGetAPI = async () => {
-    //   const res = await fetch("../utils/cookie.json");
-    //   const data = await res.json();
-    //   setStores(data);
-    //   console.log("data", data);
-    // };
-    // handleGetAPI();
   }, []);
 
   return (
     <div className="storeContainer">
-      <h1 className="cookieMall">Cookie Mall</h1>
       <div className="stores">
         {stores &&
           stores?.map(
@@ -32,9 +23,18 @@ const Product = ({ onBuy }) => {
                   Price: £{price} / <span>{number}</span>
                 </p>
                 <p className="quantity">Quantity: {quantity}</p>
-                <button className="btn storeBtn" onClick={() => onBuy(name)}>
+                <button
+                  className="btn storeBtn"
+                  onClick={() => onBuy(name)}
+                  disabled={disabled(name)}
+                >
                   {button}
                 </button>
+                {disabled(name) && (
+                  <p className="insufficientFund">
+                    Oops, Insufficient fund to buy!!
+                  </p>
+                )}
               </div>
             )
           )}

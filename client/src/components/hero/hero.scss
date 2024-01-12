@@ -27,10 +27,12 @@
     align-items: center;
     margin-top: 1rem;
   }
+
   .cookie {
     width: 16.5rem;
     height: 16.5rem;
   }
+
   svg path:nth-child(1) {
     fill: #b48548;
   }
@@ -62,6 +64,7 @@
       color: #022a4c;
     }
   }
+
   .buy {
     width: 15rem;
     height: 4.5rem;
@@ -73,6 +76,7 @@
     color: #eef4f8;
     font-size: 1.7rem;
   }
+
   .displayProduct {
     display: none;
   }
@@ -98,6 +102,7 @@
       width: 45%;
       margin: 3rem;
     }
+
     .heroText {
       width: 60%;
       height: 4rem;
@@ -107,6 +112,7 @@
       width: 25rem;
       height: 25rem;
     }
+
     .count {
       font-size: 2rem;
     }
@@ -117,6 +123,7 @@
     .buy:hover {
       cursor: pointer;
     }
+
     .start {
       box-shadow: #b48548;
     }
@@ -124,6 +131,11 @@
     .buy {
       display: none;
     }
+
+    .showProduct {
+      display: none;
+    }
+
     .displayProduct {
       display: flex;
       width: 45%;
