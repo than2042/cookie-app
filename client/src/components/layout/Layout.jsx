@@ -1,5 +1,5 @@
 // import BgImage from "../../assets/game.jpg";
-import "../layout/layout.scss";
+import "./layout.scss";
 
 const Layout = ({ children }) => {
   return <div className="container">{children}</div>;

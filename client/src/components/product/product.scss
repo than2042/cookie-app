@@ -1,0 +1,58 @@
+@import "../../index.scss";
+
+.storeContainer {
+  margin: 4rem;
+
+  .cookieMall {
+    color: #070707;
+    width: 12rem;
+    height: 4rem;
+    padding: 0.7rem;
+    background: #83f2e9;
+    border-radius: 1rem 0 2.5rem 0;
+  }
+
+  .stores {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 3rem;
+    margin-top: 1rem;
+  }
+  .storeList {
+    width: 100%;
+    .shopImge,
+    img {
+      width: 15rem;
+      height: 10rem;
+      border-radius: 1rem;
+    }
+    .price {
+      margin: 1rem 0;
+    }
+    .quantity {
+      margin: 1rem 0;
+    }
+    .storeBtn {
+      background: #356169;
+      color: antiquewhite;
+    }
+  }
+
+  @media (min-width: #{$screen-sm-min}) and (max-width: #{$screen-md-min - 1px}) {
+    .storeList {
+      width: 45%;
+    }
+  }
+
+  @media (min-width: #{$screen-lg-min}) {
+    .cookieMall {
+      background: #169741;
+      color: #f0f8ff;
+    }
+    .storeList {
+      width: 45%;
+    }
+  }
+}
