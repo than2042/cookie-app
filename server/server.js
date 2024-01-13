@@ -1,13 +1,16 @@
 import Database from "better-sqlite3";
 import express from "express";
+import fileUpload from "express-fileupload";
 import cors from "cors";
 
 const app = express();
 const port = 8080;
 app.use(cors());
+app.use(fileUpload({ createParentPath: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const db = new Database("cookie-table.db");
-app.use(express.json());
 
 app.get("/", (req, res) => {
   let cookieStore = [];
