@@ -4,6 +4,7 @@ import { faCookie } from "@fortawesome/free-solid-svg-icons";
 import Button from "../button/Button";
 import Product from "../product/Product";
 import { cookie } from "../../utils/cookie";
+import CookieSetting from "../cookie/CookieSetting";
 
 import "./hero.scss";
 
@@ -115,40 +116,43 @@ const Hero = () => {
   };
 
   return (
-    <div className="heroContainer">
-      <div className="container">
-        <h1 className="heroText">Welcome Oiganic Cookie Farm!!!</h1>
-        <div className="countContainer">
-          <FontAwesomeIcon
-            icon={faCookie}
-            className="cookie"
-            onClick={handleStart}
-          />
-          <p className="count">Count Cookies: {count}</p>
-        </div>
-        <div className="btnContainer">
-          <Button className={"start"} onClick={handleStart}>
-            Start
+    <div>
+      <div className="heroContainer">
+        <div className="container">
+          <h1 className="heroText">Welcome Oiganic Cookie Farm!!!</h1>
+          <div className="countContainer">
+            <FontAwesomeIcon
+              icon={faCookie}
+              className="cookie"
+              onClick={handleStart}
+            />
+            <p className="count">Count Cookies: {count}</p>
+          </div>
+          <div className="btnContainer">
+            <Button className={"start"} onClick={handleStart}>
+              Start
+            </Button>
+            <Button className={"stop"} onClick={handleStop}>
+              Stop
+            </Button>
+            <Button className={"reset"} onClick={handleRest}>
+              Reset
+            </Button>
+          </div>
+          <div className="showProduct">
+            {showPorduct && (
+              <Product onBuy={handleBuy} disabled={handleDisabled} />
+            )}
+          </div>
+          <Button className={"buy"} onClick={handleShow}>
+            Buy Cookies
           </Button>
-          <Button className={"stop"} onClick={handleStop}>
-            Stop
-          </Button>
-          <Button className={"reset"} onClick={handleRest}>
-            Reset
-          </Button>
         </div>
-        <div className="showProduct">
-          {showPorduct && (
-            <Product onBuy={handleBuy} disabled={handleDisabled} />
-          )}
+        <div className="displayProduct">
+          <Product onBuy={handleBuy} disabled={handleDisabled} />
         </div>
-        <Button className={"buy"} onClick={handleShow}>
-          Buy Cookies
-        </Button>
       </div>
-      <div className="displayProduct">
-        <Product onBuy={handleBuy} disabled={handleDisabled} />
-      </div>
+      <CookieSetting />
     </div>
   );
 };
